@@ -4,9 +4,14 @@ const knex = require('./connection')
 const bodyParser = require("body-parser");
 const wines = require('./routes/wines')
 const app = express();
+const cors = require('cors');
 
 app.use(bodyParser.json());
 
+app.use(cors({
+  origin: 'http://localhost:3000',
+  optionsSuccessStatus: 200
+}));
 
 app.get('/', (req, res) => res.send('Hello Wine!'));
 
