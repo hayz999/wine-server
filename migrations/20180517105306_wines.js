@@ -8,7 +8,7 @@ exports.up = function(knex, Promise) {
     table.text('winery')
     table.text('location')
     table.text('notes')
-    table.float('rating')
+    table.integer('rating')
   })
 };
 
