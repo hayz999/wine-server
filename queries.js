@@ -24,7 +24,7 @@ module.exports = {
       .returning('*')
       .then(record => record[0])
   },
-  delete(){
+  delete(id) {
     return database('wines')
       .where('id', id)
       .del()
