@@ -16,5 +16,7 @@ exports.seed = function(knex, Promise) {
           rating: 80
         }
       ])
+    }).then(() => {
+      return knex.raw('ALTER SEQUENCE wines_id_seq RESTART WITH 4;');
     });
 };
