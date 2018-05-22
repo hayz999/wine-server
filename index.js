@@ -1,5 +1,5 @@
 const express = require('express');
-const port = parseInt(process.env.PORT || 3000);
+const port = parseInt(process.env.PORT || 5000);
 const knex = require('./connection')
 const bodyParser = require("body-parser");
 const wines = require('./routes/wines')

@@ -3,12 +3,12 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable('wines', (table) => {
     table.increments()
     table.text('name')
-    table.integer('vintage')
+    table.text('vintage')
     table.text('varietal')
     table.text('winery')
     table.text('location')
     table.text('notes')
-    table.integer('rating')
+    table.text('rating')
   })
 };
 
