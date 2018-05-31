@@ -25,4 +25,12 @@ router.get('/:id/wines', (req, res, next) => {
     });
   });
 
+  router.post('/', (req, res, next) => {
+    knex('pairings')
+      .insert(req.body)
+      .returning('*')
+      .then(record => record[0])
+      .then(record => res.json(record))
+  })
+
 module.exports = router;
