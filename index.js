@@ -1,8 +1,9 @@
 const express = require('express');
 const port = parseInt(process.env.PORT || 5000);
-const knex = require('./connection')
+const knex = require('./connection');
 const bodyParser = require("body-parser");
 const wines = require('./routes/wines')
+const pairings = require('./routes/pairings')
 const app = express();
 const cors = require('cors');
 
@@ -16,6 +17,7 @@ app.use(cors({
 app.get('/', (req, res) => res.send('Hello Wine!'));
 
 app.use('/wines', wines);
+app.use('/pairings', pairings)
 
 app.use((req, res, next) => {
   const err = new Error("Not Found");
