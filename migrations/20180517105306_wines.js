@@ -10,8 +10,8 @@ exports.up = function(knex, Promise) {
     table.text('notes')
     table.text('rating')
   })
-};
+}
 
 exports.down = function(knex, Promise) {
   return knex.schema.dropTableIfExists('wines')
-};
+}

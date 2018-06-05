@@ -10,8 +10,8 @@ exports.seed = function(knex, Promise) {
           description: 'Pairs well with the tanins in this wine',
           wines_id: 1
           }
-      ]);
+      ])
     }).then(() => {
-      return knex.raw('ALTER SEQUENCE pairings_id_seq RESTART WITH 4;');
-    });
-};
+      return knex.raw('ALTER SEQUENCE pairings_id_seq RESTART WITH 4;')
+    })
+}
