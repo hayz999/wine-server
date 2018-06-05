@@ -10,7 +10,6 @@ router.get('/', (req, res, next) => {
   return knex('pairings').select()
     .then(pairings => {
       console.log('another here!');
-      
       res.json({pairings});
     }).catch(next);
 })

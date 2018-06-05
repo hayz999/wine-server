@@ -23,7 +23,7 @@ router.post('/', (req, res, next) => {
 
 router.delete('/:id', (req, res, next) => {
   queries.delete(req.params.id).then(() => {
-    res.status(204).json({deleted: true})
+    res.status(200).json({deleted: true})
   }).catch(next)
 });
 
