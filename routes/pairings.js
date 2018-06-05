@@ -34,7 +34,7 @@ router.get('/:id/wines', (req, res, next) => {
 
 router.delete('/:id', (req, res, next) => {
   knex('pairings')
-    .where('id', id)
+    .where('id', req.params.id)
     .del()
     .returning('*')
     .then(() => {
