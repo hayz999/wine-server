@@ -1,17 +1,13 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
 const knex = require('../connection')
 
-const queries = require('../queries');
+const queries = require('../queries2')
 
 router.get('/', (req, res, next) => {
-  console.log('here!');
-  
-  return knex('pairings').select()
-    .then(pairings => {
-      console.log('another here!');
-      res.json({pairings});
-    }).catch(next);
+  queries.list().then(pairings => {
+    res.json({ pairings });
+  }).catch(next);
 })
 
 router.get('/:id/wines', (req, res, next) => {
@@ -24,22 +20,16 @@ router.get('/:id/wines', (req, res, next) => {
     });
   });
 
-  router.post('/', (req, res, next) => {
-    knex('pairings')
-      .insert(req.body)
-      .returning('*')
-      .then(record => record[0])
-      .then(record => res.json(record))
-  })
+router.post('/', (req, res, next) => {
+  queries.create(req.body).then(pairing => {
+    res.status(201).json({ pairing: pairing })
+  }).catch(next)
+})
 
 router.delete('/:id', (req, res, next) => {
-  knex('pairings')
-    .where('id', req.params.id)
-    .del()
-    .returning('*')
-    .then(() => {
-      res.status(200).json({ deleted: true })
-    }).catch(next)
+  queries.delete(req.params.id).then(() => {
+    res.status(200).json({ deleted: true })
+  }).catch(next)
 });
 
 module.exports = router;

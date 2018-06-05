@@ -2,30 +2,30 @@ const database = require('./connection')
 
 module.exports = {
   list() {
-    return database('wines')
+    return database('pairings')
       .select()
   },
   read(id) {
-    return database('wines')
+    return database('pairings')
       .select()
       .where('id', id)
       .first()
   },
-  create(wine) {
-    return database('wines')
-      .insert(wine)
+  create(pairing) {
+    return database('pairings')
+      .insert(pairing)
       .returning('*')
       .then(record => record[0])
   },
-  update(id, wine) {
-    return database('wines')
+  update(id, pairing) {
+    return database('pairings')
       .where('id', id)
-      .update(wine)
+      .update(pairing)
       .returning('*')
       .then(record => record[0])
   },
   delete(id) {
-    return database('wines')
+    return database('pairings')
       .where('id', id)
       .del()
       .returning('*')
