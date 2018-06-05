@@ -32,4 +32,14 @@ router.get('/:id/wines', (req, res, next) => {
       .then(record => res.json(record))
   })
 
+router.delete('/:id', (req, res, next) => {
+  knex('pairings')
+    .where('id', id)
+    .del()
+    .returning('*')
+    .then(() => {
+      res.status(200).json({ deleted: true })
+    }).catch(next)
+});
+
 module.exports = router;
