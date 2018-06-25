@@ -10,7 +10,7 @@ const cors = require('cors')
 app.use(bodyParser.json())
 
 app.use(cors({
-  origin: 'https://wine-about-it.firebaseapp.com',
+  origin: 'https://wine-about-it.firebaseapp.com' || 'http://localhost:3000',
   optionsSuccessStatus: 200
 }))
 
